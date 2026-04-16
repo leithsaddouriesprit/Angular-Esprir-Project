@@ -33,14 +33,11 @@
     <td>{{ product.nbrlike }}</td>
 
     <td><button (click)="increment(i)" >Like</button></td>
-    <td><button (click)="buy(i)" >Buy</button></td>
+    <td><button (click)="buy(i)" [disabled]="product.quantity <= 0">Buy</button></td>
     
   </ng-container>
   </tr>
 </table>
-
-
-
 
   <button (click)="save()">save</button>
 

@@ -1,0 +1,43 @@
+<div class="mb-4">
+  <h2 class="text-primary">Welcome to the Home Page</h2>
+  <p class="text-muted">Marahba bik</p>
+  
+</div>
+<div class="mb-3">
+  <input
+    class="form-control"
+    type="text"
+    placeholder="Search products..."
+    [(ngModel)]="searchText">
+</div>
+
+<table class="table table-bordered table-hover table-striped align-middle text-center">
+  <thead class="table-dark">
+
+    <tr>
+    <th>id</th>
+    <th>title</th>
+    <th>description</th>
+    <th>category</th>
+    <th>date</th>
+    <th>status</th>
+    <th>nblikes</th>
+
+  </tr>
+  </thead>
+  <tr *ngFor="let suggestions of filteredProducts(); let i = index">
+      
+    <td>{{ suggestions.id }}</td>
+    <td>{{ suggestions.title }}</td>
+    <td>{{ suggestions.description }}</td>
+    <td>{{ suggestions.category }}</td>
+    <td>{{ suggestions.date }}</td>
+    <td>{{ suggestions.status }}</td>
+    <td>{{ suggestions.nbLikes }}</td>
+
+     <td><button (click)="liky(i)" >Like</button></td>
+    <td><button (click)="ajouter(suggestions)" [hidden]="suggestions.status == 'refusee'">Ajouter au favoris</button></td>
+
+    
+  
+  </tr>

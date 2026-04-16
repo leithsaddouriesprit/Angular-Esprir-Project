@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from '../models/Product';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +9,11 @@ import { Component } from '@angular/core';
 export class HomeComponent {
 
 pricemax: number | null = null;
-color: string = 'yellow';
+color: string = 'red';
 searchText: string = '';
 
   cinfo1: string = 'hello 1CINFO1';
-products: any= [
+products: Product[]= [
   { id: 1, name: 'Pomme',description: 'product description 1', price: 10, nbrlike: 0, quantity: 1 },
   { id: 2, name: 'Poire', description: 'product description 2', price: 20, nbrlike: 0, quantity: 50 },
   { id: 3, name: 'Mandarine', description: 'product description 3', price: 30, nbrlike: 0, quantity: 50 }
@@ -40,7 +41,7 @@ else {
 filteredProducts() {
   const text = this.searchText.toLowerCase().trim();
 
-  return this.products.filter((product: { name: string; description: string; }) =>
+  return this.products.filter((product: Product) =>
     product.name.toLowerCase().includes(text) ||
     product.description.toLowerCase().includes(text)
   );
