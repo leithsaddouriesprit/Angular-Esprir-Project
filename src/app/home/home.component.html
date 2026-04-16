@@ -1,0 +1,50 @@
+<div class="mb-4">
+  <h2 class="text-primary">Welcome to the Home Page</h2>
+  <p class="text-muted">Marahba bik</p>
+  <p><strong>{{ cinfo1 }}</strong></p>
+</div>
+
+
+
+<div class="mb-3">
+  <input
+    class="form-control"
+    type="text"
+    placeholder="Search products..."
+    [(ngModel)]="searchText">
+</div>
+<table class="table table-bordered table-hover table-striped align-middle text-center">
+  <thead class="table-dark">
+
+    <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Likes</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let product of filteredProducts(); let i = index">
+    <ng-container *ngIf="pricemax == null || product.price >= pricemax">   
+    <td>{{ product.name }}</td>
+    <td>{{ product.description }}</td>
+    <td>${{ product.price }}</td>
+    <td>{{ product.quantity }}</td>
+    <td>{{ product.nbrlike }}</td>
+
+    <td><button (click)="increment(i)" >Like</button></td>
+    <td><button (click)="buy(i)" >Buy</button></td>
+    
+  </ng-container>
+  </tr>
+</table>
+
+
+
+
+  <button (click)="save()">save</button>
+
+  <p [style.backgroundColor]="color">This is a styled paragraph.</p>
+  <div class="alert alert-warning mt-3">
+  This is a styled paragraph.
+</div>
