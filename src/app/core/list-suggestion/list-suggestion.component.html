@@ -37,6 +37,7 @@
 
      <td><button (click)="liky(i)" >Like</button></td>
     <td><button (click)="ajouter(suggestions)" [hidden]="suggestions.status == 'refusee'">Ajouter au favoris</button></td>
+    <td><button [routerLink]="['details', suggestions.id]">Details</button></td>
 
     
   
