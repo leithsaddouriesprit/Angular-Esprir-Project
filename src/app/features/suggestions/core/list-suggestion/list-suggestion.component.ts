@@ -16,7 +16,7 @@ suggestions: Suggestion[] = [];
 
 constructor(private sugS: SuggestionService) {}
 
-ngOnInit() {this.suggestions = this.sugS.suggestions;}
+ngOnInit() {this.suggestions = this.sugS.getSuggestions();}
 
 
 
@@ -47,3 +47,5 @@ filteredProducts() {
 function ngOnInit() {
   throw new Error('Function not implemented.');
 }
+
+

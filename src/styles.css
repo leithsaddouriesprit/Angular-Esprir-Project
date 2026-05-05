@@ -1,1 +1,107 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files
+
+Pour créer un module dans angular vous pouvez lancer la commande:
+ng generate module nom_du_module
+ng g c nom_du_module/nom_du_composant
+
+Par défaut le module crée n’est pas attaché au module racine. Pour
+attacher le module créé automatiquement au module racine lors de
+sa création la commande devient
+ng g m nom_du_module --routing --module=app 
+
+
+ng g s services/product
+ng new my-app --skip-tests
+
+
+lazy loading:
+ng g m products --routing
+ng g c products/product-list
+product -routing.module.ts
+const routes: Routes = [
+  { path: '', component: ProductListComponent },
+  { path: 'details', component: ProductDetailsComponent }
+];
+
+et dans app-routing.module.ts
+{
+ path:'products',
+ loadChildren: () =>
+   import('./products/products.module')
+   .then(m => m.ProductsModule)
+}
+
+commande module avec lazy loading:
+ng g m products --route products --module app.module --skip-tests
+
+
+routerLink="/products"
+[routerLink]="['/details', id]"
+this.router.navigate(['/products'])
+
+
+
+
+
+addProduct() {
+  const product = {
+    ...this.newProduct,
+    id: this.products.length + 1,
+    nbrlike: 0
+  };
+
+  this.products.push(product);
+
+  this.newProduct = {
+    id: 0,
+    name: '',
+    description: '',
+    price: 0,
+    nbrlike: 0,
+    quantity: 0
+  };
+}
+
+
+
+
+<div class="card p-3 mb-4 shadow-sm">
+  <h4>Add Product</h4>
+
+  <input
+    class="form-control mb-2"
+    type="text"
+    placeholder="Product name"
+    [(ngModel)]="newProduct.name">
+
+  <input
+    class="form-control mb-2"
+    type="text"
+    placeholder="Description"
+    [(ngModel)]="newProduct.description">
+
+  <input
+    class="form-control mb-2"
+    type="number"
+    placeholder="Price"
+    [(ngModel)]="newProduct.price">
+
+  <input
+    class="form-control mb-2"
+    type="number"
+    placeholder="Quantity"
+    [(ngModel)]="newProduct.quantity">
+
+  <button class="btn btn-success" (click)="addProduct()">
+    Add Product
+  </button>
+</div>
+
+
+
+
+
+
+
+
+*/

@@ -1,0 +1,95 @@
+<div class="container mt-4">
+  <div class="card p-4 shadow-sm">
+
+    <h1 class="mb-4">Ajouter une suggestion</h1>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <label class="form-label">Titre :</label>
+        <input
+  class="form-control"
+  [class.is-invalid]="form.get('Titre')?.invalid && form.get('Titre')?.touched"
+  formControlName="Titre">
+
+        <div class="text-danger" *ngIf="form.get('Titre')?.touched && form.get('Titre')?.invalid">
+          <small *ngIf="form.get('Titre')?.errors?.['required']">
+            Le titre est obligatoire.
+          </small>
+
+          <small *ngIf="form.get('Titre')?.errors?.['minlength']">
+            Le titre doit contenir au minimum 5 caractères.
+          </small>
+
+          <small *ngIf="form.get('Titre')?.errors?.['pattern']">
+            Le titre doit commencer par une majuscule et contenir uniquement des lettres.
+          </small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Description :</label>
+        <textarea
+          class="form-control"
+          rows="4"
+          placeholder="Enter Description"
+          formControlName="Description">
+        </textarea>
+<small>
+{{ form.get('Description')?.value?.length || 0 }} / 30 caractères
+</small>
+        <div class="text-danger" *ngIf="form.get('Description')?.touched && form.get('Description')?.invalid">
+          <small *ngIf="form.get('Description')?.errors?.['required']">
+            La description est obligatoire.
+          </small>
+
+          <small *ngIf="form.get('Description')?.errors?.['minlength']">
+            La description doit contenir au minimum 30 caractères.
+          </small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Catégorie :</label>
+        <select class="form-control" formControlName="Categorie">
+          <option value="">-- Sélectionnez une catégorie --</option>
+          <option *ngFor="let c of categories" [value]="c">
+            {{ c }}
+          </option>
+        </select>
+
+        <div class="text-danger" *ngIf="form.get('Categorie')?.touched && form.get('Categorie')?.invalid">
+          <small *ngIf="form.get('Categorie')?.errors?.['required']">
+            La catégorie est obligatoire.
+          </small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Date :</label>
+        <input
+          type="text"
+          class="form-control"
+          readonly
+          formControlName="Date">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Status :</label>
+        <input
+          type="text"
+          class="form-control"
+          readonly
+          formControlName="Status">
+      </div>
+
+      <button
+  type="submit"
+  class="btn btn-primary"
+  [disabled]="form.invalid">
+  Soumettre
+</button>
+
+    </form>
+  </div>
+</div>

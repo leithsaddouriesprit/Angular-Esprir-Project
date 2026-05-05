@@ -45,7 +45,18 @@ status: 'en_attente',
 nbLikes:0
 },
 ];
+constructor() { }
 
+getSuggestions(): Suggestion[] {
+  return this.suggestions;
+}
 
-  constructor() { }
+addSuggestion(suggestion: Suggestion) {
+  this.suggestions.push(suggestion);
+}
+
+getNextId(): number {
+  return this.suggestions.length + 1;
+}
+  
 }
