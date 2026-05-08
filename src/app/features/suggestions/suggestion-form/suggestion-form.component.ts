@@ -46,23 +46,29 @@ form = new FormGroup({
 });
 
 onSubmit() {
+  console.log('SUBMIT CLICKED');
+
   if (this.form.invalid) {
+    console.log('FORM INVALID');
     return;
   }
 
- const newSuggestion: Suggestion = {
-  id: this.suggestionService.getNextId(),
-  title: this.form.value.Titre!,
-  description: this.form.value.Description!,
-  category: this.form.value.Categorie!,
-  date: new Date(),
-  status: 'en_attente',
-  nbLikes: 0
-};
+ const newSuggestion = {
+    id: this.suggestionService.getNextId(),
+    title: this.form.value.Titre!,
+    description: this.form.value.Description!,
+    category: this.form.value.Categorie!,
+    date: new Date(),
+    status: 'en_attente',
+    nbLikes: 0
+  };
 
-this.suggestionService.addSuggestion(newSuggestion);
-this.router.navigate(['/suggestions']);
+  this.suggestionService.addSuggestion(newSuggestion);
+  console.log('AFTER ADD:', this.suggestionService.getSuggestions());
+
+  this.router.navigate(['/suggestions']);
+}
 
   
 }
-}
+

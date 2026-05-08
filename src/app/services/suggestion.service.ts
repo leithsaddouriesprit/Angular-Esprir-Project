@@ -45,7 +45,10 @@ status: 'en_attente',
 nbLikes:0
 },
 ];
-constructor() { }
+constructor() { 
+    console.log('SuggestionService created');
+
+}
 
 getSuggestions(): Suggestion[] {
   return this.suggestions;
